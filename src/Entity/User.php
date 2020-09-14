@@ -13,12 +13,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    use ResourceId;
+
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
@@ -44,11 +40,6 @@ class User implements UserInterface
     public function __construct()
     {
         $this->articles = new ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     public function getEmail(): ?string

@@ -10,12 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Article
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    use ResourceId;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -33,10 +28,6 @@ class Article
      */
     private $author;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getName(): ?string
     {

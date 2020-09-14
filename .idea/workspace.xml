@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec6a6fdb-61e9-4f0e-8ebd-fb75154679e0" name="Default Changelist" comment="" />
+    <list default="true" id="ec6a6fdb-61e9-4f0e-8ebd-fb75154679e0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Entity/ResourceId.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Timestampable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1e0d280b-ff11-4224-9eb0-e20cd8b6adaa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1e0d280b-ff11-4224-9eb0-e20cd8b6adaa.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -114,8 +124,19 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Entity" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\skeleton\src\Entity" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -125,7 +146,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600064217118</updated>
-      <workItem from="1600064218311" duration="918000" />
+      <workItem from="1600064218311" duration="2290000" />
+      <workItem from="1600084163198" duration="990000" />
     </task>
     <servers />
   </component>
@@ -137,5 +159,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/-768.0.768.1326/0.0.1920.1040@0.0.1920.1040" timestamp="1600064824588" />
+    <state x="728" y="227" key="#com.intellij.ide.util.MemberChooser" timestamp="1600084891571">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="728" y="227" key="#com.intellij.ide.util.MemberChooser/-768.0.768.1326/0.0.1920.1040@0.0.1920.1040" timestamp="1600084891571" />
+    <state x="775" y="439" key="NewPhpFileDialog" timestamp="1600084204684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="775" y="439" key="NewPhpFileDialog/-768.0.768.1326/0.0.1920.1040@0.0.1920.1040" timestamp="1600084204684" />
   </component>
 </project>
