@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ec6a6fdb-61e9-4f0e-8ebd-fb75154679e0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +120,7 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Entity" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -143,6 +144,7 @@
       <updated>1600064217118</updated>
       <workItem from="1600064218311" duration="2290000" />
       <workItem from="1600084163198" duration="1406000" />
+      <workItem from="1600236548117" duration="1492000" />
     </task>
     <servers />
   </component>
@@ -158,6 +160,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="728" y="227" key="#com.intellij.ide.util.MemberChooser/-768.0.768.1326/0.0.1920.1040@0.0.1920.1040" timestamp="1600084891571" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600236741781">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-768.0.768.1326/0.0.1920.1040@0.0.1920.1040" timestamp="1600236741781" />
     <state x="775" y="439" key="NewPhpFileDialog" timestamp="1600084204684">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
