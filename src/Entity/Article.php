@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Article
 {
     use ResourceId;
+    use Timestampable;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -27,6 +28,11 @@ class Article
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
 
     public function getName(): ?string

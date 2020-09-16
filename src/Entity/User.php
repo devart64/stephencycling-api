@@ -14,6 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface
 {
     use ResourceId;
+    use Timestampable;
 
 
     /**
@@ -40,6 +41,8 @@ class User implements UserInterface
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getEmail(): ?string
