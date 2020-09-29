@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ApiResource(
@@ -32,6 +33,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
  * )
  * @ApiFilter(SearchFilter::class, properties={"email":"partial"})
  * @ApiFilter(DateFilter::class, properties={"createdAt"})
+ * @ApiFilter(BooleanFilter::class, properties={"status"})
  */
 class User implements UserInterface
 {
@@ -41,7 +43,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups ({"user_read", "user_details_read"})
+     * @Groups ({"user_read", "user_details_read", "article:details_read"})
      */
     private $email;
 
@@ -64,11 +66,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups ({"user_read", "user_details_read", "article:details_read"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups ({"user_read", "user_details_read", "article:details_read"})
      */
     private $age;
 
@@ -77,6 +81,10 @@ class User implements UserInterface
         $this->articles = new ArrayCollection();
 
         $this->createdAt = new \DateTimeImmutable();
+
+        $this->status = true;
+
+        $this->age = 18;
     }
 
     public function getEmail(): ?string
