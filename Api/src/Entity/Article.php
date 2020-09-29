@@ -11,14 +11,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
  * @ApiResource(
  *     collectionOperations={
-            "get"={
- *          "normalization_context"={"groups"={"article_read"}}
- *          }
+ *         "get"={
+ *             "normalization_context"={"groups"={"article:read"}}
+ *         }
  *     },
  *     itemOperations={
-            "get"={
- *          "normalization_context"={"groups"={"article_details_read"}}
- *          }
+ *         "get"={
+ *             "normalization_context"={"groups"={"article:details_read"}}
+ *         }
  *     }
  * )
  */
@@ -29,19 +29,20 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_details_read", "article_read"})
+     * @Groups({"user_details_read", "article:read", "article:details_read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"user_details_read", "article_read"})
+     * @Groups({"user_details_read", "article:read", "article:details_read"})
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"article:details_read"})
      */
     private $author;
 

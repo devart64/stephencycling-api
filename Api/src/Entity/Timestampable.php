@@ -3,12 +3,15 @@ namespace App\Entity;
 
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 trait Timestampable{
 
     /**
      * @var DateTimeInterface
      * @ORM\Column(type="datetime")
+     * @Groups({"article:read", "article:details_read"})
+
      */
     private $createdAt;
 

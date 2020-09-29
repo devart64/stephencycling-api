@@ -2,15 +2,16 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use ApiPlatform\Core\Action\NotFoundAction;
 use Symfony\Component\Serializer\Annotation\Groups;
-
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ApiResource(
@@ -29,6 +30,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "delete"
  *     }
  * )
+ * @ApiFilter(SearchFilter::class, properties={"email":"partial"})
+ * @ApiFilter(DateFilter::class, properties={"createdAt"})
  */
 class User implements UserInterface
 {
@@ -38,7 +41,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"user_read", "user_details_read"})
+     * @Groups ({"user_read", "user_details_read"})
      */
     private $email;
 
@@ -55,9 +58,19 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="author")
-     * @Groups({"user_details_read"})
+     * @Groups ({"user_details_read"})
      */
     private $articles;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $status;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $age;
 
     public function __construct()
     {
@@ -166,6 +179,30 @@ class User implements UserInterface
                 $article->setAuthor(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(int $age): self
+    {
+        $this->age = $age;
 
         return $this;
     }
