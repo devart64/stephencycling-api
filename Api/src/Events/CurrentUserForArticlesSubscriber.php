@@ -25,11 +25,15 @@ class CurrentUserForArticlesSubscriber implements EventSubscriberInterface
        ];
     }
 
+    /**
+     * Injeciton de l'autheur dans l'article créé.
+     * @param ViewEvent $event
+     */
     public function currentUserForArticles(ViewEvent $event): void
     {
         $article = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
-
+        // on set l'author avec l'utilisateur connecté
         if ($article instanceof Article && Request::METHOD_POST == $method) {
             $article->setAuthor($this->Security->getUser());
         }
