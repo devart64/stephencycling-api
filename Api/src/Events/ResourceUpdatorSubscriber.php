@@ -7,27 +7,25 @@ namespace App\Events;
 use ApiPlatform\Core\EventListener\EventPriorities;
 use App\Authorizations\UserAuthorizationChecker;
 use App\Entity\User;
+use App\Services\ResourcesUpdatorInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
-class UserSubscriber implements EventSubscriberInterface
+class ResourceUpdatorSubscriber implements EventSubscriberInterface
 {
 
-    private $methodNotAllowed = [
-        Request::METHOD_POST,
-        Request::METHOD_GET
-    ];
+
     /**
-     * @var UserAuthorizationChecker
+     * @var ResourcesUpdatorInterface
      */
-    private $userAuthorizationChecker;
+    private $resourcesUpdator;
 
-    public function __construct(UserAuthorizationChecker $userAuthorizationChecker){
+    public function __construct(ResourcesUpdatorInterface $resourcesUpdator){
 
 
-        $this->userAuthorizationChecker = $userAuthorizationChecker;
+        $this->resourcesUpdator = $resourcesUpdator;
     }
 
     public static function getSubscribedEvents()

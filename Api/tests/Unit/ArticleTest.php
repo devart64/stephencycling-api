@@ -44,9 +44,6 @@ class ArticleTest extends TestCase
 
         self::assertInstanceOf(Article::class, $response);
         self::assertInstanceOf(User::class, $this->Article->getAuthor());
-        // on attend à recevoir le name de l'article
-       /* self::assertEquals($value, $this->Article->getAuthor());
-        self::assertEquals($value, $value->getUsername());*/
     }
 
 }
