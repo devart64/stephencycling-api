@@ -13,7 +13,7 @@ class ResourceAccessChecker implements ResourceAccessCheckerInterface
 {
 
     /**
-     * @var UserInterface
+     * @var ?UserInterface
      */
     private $user;
 

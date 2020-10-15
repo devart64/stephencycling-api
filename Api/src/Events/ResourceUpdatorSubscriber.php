@@ -6,6 +6,7 @@ namespace App\Events;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use App\Authorizations\UserAuthorizationChecker;
+use App\Entity\Article;
 use App\Entity\User;
 use App\Services\ResourcesUpdatorInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -41,12 +42,14 @@ class ResourceUpdatorSubscriber implements EventSubscriberInterface
      */
     public function check(ViewEvent $event):void
     {
-        $user = $event->getControllerResult();
-        $method = $event->getRequest()->getMethod();
+        $objet = $event->getControllerResult();
         // on recherche la method dans notre tableau
-        if ($user instanceof User && !in_array($method, $this->methodNotAllowed, true)) {
-            $this->userAuthorizationChecker->check($user, $method);
-            $user->setUpdatedAt(new \DateTimeImmutable());
+        if ($objet instanceof User || $objet instanceof Article) {
+            $user = $objet instanceof User ? $objet : $objet->getAuthor();
+            $canProcess = $this->resourcesUpdator->proccess($event->getRequest()->getMethod(), $user);
+            if ($canProcess) {
+                $user->setUpdatedAt(new \DateTimeImmutable());
+            }
         }
     }
 
