@@ -8,5 +8,5 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 interface ResourcesUpdatorInterface
 {
-    public function proccess(string $method, UserInterface $user): bool;
+    public function process(string $method, UserInterface $user): bool;
 }

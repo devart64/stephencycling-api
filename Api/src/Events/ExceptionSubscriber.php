@@ -1,17 +1,19 @@
 <?php
 
 
-namespace App\EventListener;
+namespace App\Events;
 
 
+use App\Factory\JsonResponseInterface;
 use App\Normalizer\NormalizerInterface;
+use App\Services\ExceptionNormalizerFormatterInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class ExceptionListener implements EventSubscriberInterface
+class ExceptionSubscriber implements EventSubscriberInterface
 {
 
     private static $normalizers;
@@ -19,10 +21,20 @@ class ExceptionListener implements EventSubscriberInterface
      * @var SerializerInterface
      */
     private $serializer;
+    /**
+     * @var ExceptionNormalizerFormatterInterface
+     */
+    private $exceptionNormalizerFormatter;
+    /**
+     * @var JsonResponseInterface
+     */
+    private $jsonResponse;
 
-    public function __construct(SerializerInterface $serializer)
+    public function __construct(SerializerInterface $serializer, ExceptionNormalizerFormatterInterface $exceptionNormalizerFormatter, JsonResponseInterface $jsonResponse)
     {
         $this->serializer = $serializer;
+        $this->exceptionNormalizerFormatter = $exceptionNormalizerFormatter;
+        $this->jsonResponse = $jsonResponse;
     }
 
     public static function getSubscribedEvents()
@@ -33,8 +45,7 @@ class ExceptionListener implements EventSubscriberInterface
     }
 
     public function processException(ExceptionEvent $event)
-    {
-        $result = null;
+    {        $result = null;
         /** @var  $exception */
         $exception = $event->getThrowable();
 
@@ -46,18 +57,16 @@ class ExceptionListener implements EventSubscriberInterface
             }
         }
         if (null === $result) {
-            $result['code'] = Response::HTTP_BAD_REQUEST;
-            $result['body'] = [
-                'code' => $result['code'],
-                'message' => $exception->getMessage()
-            ];
+            $result = $this->exceptionNormalizerFormatter->format(
+                $exception->getMessage(),
+                Response::HTTP_BAD_REQUEST
+            );
         }
-        $body = $this->serializer->serialize($result['body'], 'json');
+        $body = $this->serializer->serialize($result, 'json');
 
-        $response = new Response($body, $result['code']);
-        $response->headers->set('Content-Type', 'application/json');
 
-        $event->setResponse($response);
+        $event->setResponse($this->jsonResponse->getJsonResponse($result['code'], $body));
+
     }
 
     public function addNormalizer(NormalizerInterface $normalizer)

@@ -5,7 +5,6 @@ namespace App\Events;
 
 
 use ApiPlatform\Core\EventListener\EventPriorities;
-use App\Authorizations\UserAuthorizationChecker;
 use App\Entity\Article;
 use App\Entity\User;
 use App\Services\ResourcesUpdatorInterface;
@@ -46,7 +45,7 @@ class ResourceUpdatorSubscriber implements EventSubscriberInterface
         // on recherche la method dans notre tableau
         if ($objet instanceof User || $objet instanceof Article) {
             $user = $objet instanceof User ? $objet : $objet->getAuthor();
-            $canProcess = $this->resourcesUpdator->proccess($event->getRequest()->getMethod(), $user);
+            $canProcess = $this->resourcesUpdator->process($event->getRequest()->getMethod(), $user);
             if ($canProcess) {
                 $user->setUpdatedAt(new \DateTimeImmutable());
             }

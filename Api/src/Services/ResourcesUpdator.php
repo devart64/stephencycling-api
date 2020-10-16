@@ -32,7 +32,7 @@ class ResourcesUpdator implements ResourcesUpdatorInterface
         $this->authentificationChecker = $authentificationChecker;
     }
 
-    public function proccess(string $method, UserInterface $user): bool
+    public function process(string $method, UserInterface $user): bool
     {
         if (in_array($method, $this->methodAllowed)) {
             $this->authentificationChecker->isAuthenticated();
