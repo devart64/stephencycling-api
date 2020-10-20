@@ -3,8 +3,8 @@
 
 namespace App\Normalizer;
 
-
 use App\Services\ExceptionNormalizerFormatterInterface;
+use Exception;
 
 abstract class AbstractNormalizer implements NormalizerInterface
 {
@@ -27,10 +27,8 @@ abstract class AbstractNormalizer implements NormalizerInterface
 
 
 
-    public function supports(\Exception $exception): bool
+    public function supports(Exception $exception): bool
     {
         return in_array(get_class($exception), $this->exceptionTypes, true);
     }
-
-
 }

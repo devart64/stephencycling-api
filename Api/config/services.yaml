@@ -58,3 +58,10 @@ services:
       - { type: 'App\Exceptions\AuthentificationException' }
     tags:
       - { name: 'miniblog.normalizer' }
+
+  miniblog.normalizer.authentificationnot_found_exception:
+    class: App\Normalizer\NotFoundExceptionNormalizer
+    arguments:
+      - { type: 'Symfony\Component\HttpKernel\Exception\NotFountHttpException' }
+    tags:
+      - { name: 'miniblog.normalizer' }

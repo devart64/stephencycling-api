@@ -3,7 +3,6 @@
 
 namespace App\Services;
 
-
 use App\Authorizations\AuthentificationCheckerInterface;
 use App\Authorizations\ResourceAccessCheckerInterface;
 use Symfony\Component\HttpFoundation\Request;

@@ -3,7 +3,6 @@
 
 namespace App\Factory;
 
-
 use Symfony\Component\HttpFoundation\Response;
 
 interface JsonResponseInterface

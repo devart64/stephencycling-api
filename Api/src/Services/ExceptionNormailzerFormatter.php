@@ -3,7 +3,6 @@
 
 namespace App\Services;
 
-
 use Symfony\Component\HttpFoundation\Response;
 
 class ExceptionNormailzerFormatter implements ExceptionNormalizerFormatterInterface

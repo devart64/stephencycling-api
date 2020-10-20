@@ -3,7 +3,6 @@
 
 namespace App\Swagger;
 
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 

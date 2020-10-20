@@ -3,7 +3,6 @@
 
 namespace App\Events;
 
-
 use ApiPlatform\Core\EventListener\EventPriorities;
 use App\Entity\Article;
 use App\Entity\User;
@@ -22,7 +21,8 @@ class ResourceUpdatorSubscriber implements EventSubscriberInterface
      */
     private $resourcesUpdator;
 
-    public function __construct(ResourcesUpdatorInterface $resourcesUpdator){
+    public function __construct(ResourcesUpdatorInterface $resourcesUpdator)
+    {
 
 
         $this->resourcesUpdator = $resourcesUpdator;
@@ -51,5 +51,4 @@ class ResourceUpdatorSubscriber implements EventSubscriberInterface
             }
         }
     }
-
 }

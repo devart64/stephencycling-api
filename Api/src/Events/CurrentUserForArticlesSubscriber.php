@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Events;
+
 use ApiPlatform\Core\EventListener\EventPriorities;
 use App\Entity\Article;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -20,9 +21,9 @@ class CurrentUserForArticlesSubscriber implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-       return[
+        return[
            KernelEvents::VIEW => ['currentUserForArticles', EventPriorities::PRE_VALIDATE]
-       ];
+        ];
     }
 
     /**

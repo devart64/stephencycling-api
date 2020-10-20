@@ -3,7 +3,6 @@
 
 namespace App\Events;
 
-
 use ApiPlatform\Core\EventListener\EventPriorities;
 use App\Entity\User;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -18,7 +17,8 @@ class PasswordEncoderSubscriber implements EventSubscriberInterface
      */
     private $encoder;
 
-    public function __construct(UserPasswordEncoderInterface $encoder){
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
 
         $this->encoder = $encoder;
     }
@@ -43,5 +43,4 @@ class PasswordEncoderSubscriber implements EventSubscriberInterface
             $user->setPassword($passhash);
         }
     }
-
 }

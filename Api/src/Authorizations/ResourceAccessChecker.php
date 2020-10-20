@@ -3,7 +3,6 @@
 
 namespace App\Authorizations;
 
-
 use AppBundle\Exceptions\ResourceAccessException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
@@ -17,7 +16,8 @@ class ResourceAccessChecker implements ResourceAccessCheckerInterface
      */
     private $user;
 
-    public function __construct(Security $security) {
+    public function __construct(Security $security)
+    {
 
         $this->user = $security->getUser();
     }

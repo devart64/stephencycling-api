@@ -5,7 +5,8 @@ use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-trait Timestampable{
+trait Timestampable
+{
 
     /**
      * @var DateTimeInterface
@@ -52,6 +53,4 @@ trait Timestampable{
     {
         $this->updatedAt = $updatedAt;
     }
-
-
 }

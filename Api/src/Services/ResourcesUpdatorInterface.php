@@ -3,7 +3,6 @@
 
 namespace App\Services;
 
-
 use Symfony\Component\Security\Core\User\UserInterface;
 
 interface ResourcesUpdatorInterface

@@ -3,7 +3,6 @@
 
 namespace App\Authorizations;
 
-
 use AppBundle\Exceptions\AuthentificationException;
 use AppBundle\Exceptions\ResourceAccessException;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +16,8 @@ class AuthentificationChecker implements AuthentificationCheckerInterface
      */
     private $user;
 
-    public function __construct(Security $security) {
+    public function __construct(Security $security)
+    {
 
         $this->user = $security->getUser();
     }

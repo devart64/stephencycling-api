@@ -3,8 +3,8 @@
 
 namespace App\EventListener;
 
-
 use App\Normalizer\NormalizerInterface;
+use Exception;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
@@ -13,6 +13,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class ExceptionListener implements EventSubscriberInterface
 {
+
 
     private static $normalizers;
     /**
@@ -35,13 +36,12 @@ class ExceptionListener implements EventSubscriberInterface
     public function processException(ExceptionEvent $event)
     {
         $result = null;
-        /** @var  $exception */
-        $exception = $event->getThrowable();
 
+        $exception = $event->getThrowable();
         /** @var NormalizerInterface $normalizer */
         foreach (self::$normalizers as $key => $normalizer) {
             if ($normalizer->supports($exception)) {
-                $result = $normalizer->nomalize($exception);
+                $result = $normalizer->normalize($exception);
                 break;
             }
         }
@@ -64,5 +64,4 @@ class ExceptionListener implements EventSubscriberInterface
     {
         self::$normalizers[] = $normalizer;
     }
-
 }

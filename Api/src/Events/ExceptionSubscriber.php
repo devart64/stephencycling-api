@@ -3,7 +3,6 @@
 
 namespace App\Events;
 
-
 use App\Factory\JsonResponseInterface;
 use App\Normalizer\NormalizerInterface;
 use App\Services\ExceptionNormalizerFormatterInterface;
@@ -45,14 +44,15 @@ class ExceptionSubscriber implements EventSubscriberInterface
     }
 
     public function processException(ExceptionEvent $event)
-    {        $result = null;
+    {
+        $result = null;
         /** @var  $exception */
         $exception = $event->getThrowable();
 
         /** @var NormalizerInterface $normalizer */
         foreach (self::$normalizers as $key => $normalizer) {
             if ($normalizer->supports($exception)) {
-                $result = $normalizer->nomalize($exception);
+                $result = $normalizer->normalize($exception);
                 break;
             }
         }
@@ -62,16 +62,17 @@ class ExceptionSubscriber implements EventSubscriberInterface
                 Response::HTTP_BAD_REQUEST
             );
         }
-        $body = $this->serializer->serialize($result, 'json');
 
-
-        $event->setResponse($this->jsonResponse->getJsonResponse($result['code'], $body));
-
+        $event->setResponse(
+            $this->jsonResponse->getJsonResponse(
+                $result['code'],
+                $this->serializer->serialize($result, 'json')
+            )
+        );
     }
 
     public function addNormalizer(NormalizerInterface $normalizer)
     {
         self::$normalizers[] = $normalizer;
     }
-
 }

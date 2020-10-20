@@ -3,7 +3,6 @@
 
 namespace App\Tests\Func;
 
-
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,8 +20,7 @@ abstract class AbstractEndPoint extends WebTestCase
         string $payload = '',
         array $parameter = [],
         bool $withAuthentication = true
-    ): Response
-    {
+    ): Response {
         $client = $this->createAuthentificationClient($withAuthentication);
 
         $client->request(
@@ -32,7 +30,6 @@ abstract class AbstractEndPoint extends WebTestCase
             [],
             $this->serverInformations,
             $payload
-
         );
 
         return $client->getResponse();
@@ -58,5 +55,4 @@ abstract class AbstractEndPoint extends WebTestCase
         $client->setServerParameter('HTTP_Authorization', sprintf('Bearer %s', $data['token']));
         return $client;
     }
-
 }

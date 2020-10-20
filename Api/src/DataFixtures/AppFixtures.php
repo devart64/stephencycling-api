@@ -17,7 +17,8 @@ class AppFixtures extends Fixture
      */
     private $encoder;
 
-    public function __construct(UserPasswordEncoderInterface $encoder){
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
 
         $this->encoder = $encoder;
     }
@@ -51,13 +52,12 @@ class AppFixtures extends Fixture
 
             // on persist notre utilisateur
             $manager->persist($User);
-           for ($a = 0; $a < random_int(5, 15); $a++) {
-               $Article = (new Article())->setAuthor($User)
+            for ($a = 0; $a < random_int(5, 15); $a++) {
+                $Article = (new Article())->setAuthor($User)
                                          ->setContent($fake->text(300))
-                                         ->setName($fake->text(50 ));
-               $manager->persist($Article);
-
-           }
+                                         ->setName($fake->text(50));
+                $manager->persist($Article);
+            }
         }
         $manager->flush();
     }

@@ -3,7 +3,6 @@
 
 namespace App\Authorizations;
 
-
 interface AuthentificationCheckerInterface
 {
 
